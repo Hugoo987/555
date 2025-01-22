@@ -6,28 +6,32 @@
     <title>來點好康 | 折扣碼</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<script>
-        function copydirect() {
-            const value = 'FNBO29SHA';
-            const el = document.createElement('textarea');
-            el.value = value;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-            window.location = 'https://s.shopee.tw/50HhoPLjgxF'
-        }
-</script>
-<button onclick="copydirect()">1/30限定</button>
+    
 <body>
     <header>
-        <h1>Welcome to My Minimalist Website</h1>
+        <h1> 來點好康 | 折扣碼 </h1>
+        <h2> 蝦皮折扣碼 </h2>
+        <h3> 點擊按鈕自動複製折扣碼，跳轉後貼上即可~</h3>
     </header>
+    <script>
+        function copyredirect(text) {
+            const tempInput = document.createElement("input");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            window.location.href = "https://s.shopee.tw/50HhoPLjgx";
+        }
+    </script>
     <main>
         <section>
-            <h2>About</h2>
-            <p>This is a simple and clean website layout that showcases the minimalist design philosophy. The focus is on content without unnecessary distractions.</p>
+            <h2>$100-20</h2>
+            <p>1234</p>
         </section>
     </main>
+    <button onclick="copyredirect('4PEAYT8EZ')">1/25</button>
+    <button onclick="copyredirect('65EGRXWDH')">1/26</button>
+    <button onclick="copyredirect('4WRKU4T23')">1/27</button>
 </body>
 </html>
