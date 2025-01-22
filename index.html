@@ -1,11 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimalist Website</title>
+    <title>來點好康 | 折扣碼</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+<script>
+        function copydirect() {
+            const value = 'FNBO29SHA';
+            const el = document.createElement('textarea');
+            el.value = value;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            window.location = 'https://s.shopee.tw/50HhoPLjgxF'
+        }
+</script>
+<button onclick="copydirect()">1/30限定</button>
 <body>
     <header>
         <h1>Welcome to My Minimalist Website</h1>
@@ -15,13 +28,6 @@
             <h2>About</h2>
             <p>This is a simple and clean website layout that showcases the minimalist design philosophy. The focus is on content without unnecessary distractions.</p>
         </section>
-        <section>
-            <h2>Contact</h2>
-            <p>If you would like to get in touch, please reach out via email at contact@example.com.</p>
-        </section>
     </main>
-    <footer>
-        <p>&copy; 2023 Minimalist Website. All Rights Reserved.</p>
-    </footer>
 </body>
 </html>
