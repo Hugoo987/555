@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>來點好康 | 折扣碼</title>
+    <title>來點好康 | 折扣碼 & 蝦幣轉盤</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,12 +11,11 @@
             margin: 0 auto;
             padding: 0;
         }
-        
+
         .banner {
             background-color: #dc7633;
             width: 100%;
             padding: 20px;
-            margin: 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -26,8 +25,6 @@
         .logo-main {
             color: black;
             font-size: 24px;
-            margin: 0;
-            text-align: left;
             font-weight: bold;
         }
 
@@ -40,17 +37,15 @@
             left: 0;
             top: 50%;
             transform: translateY(-50%);
-            pointer-events: none;
         }
 
         .social-links {
             display: flex;
             gap: 20px;
-            z-index: 1;
         }
 
         .social-links a {
-            color: black;
+            color: white;
             text-decoration: none;
             font-size: 16px;
             transition: opacity 0.3s ease;
@@ -59,7 +54,12 @@
         .social-links a:hover {
             opacity: 0.8;
         }
-        
+
+        .nav-buttons, .content {
+            text-align: center;
+            margin: 20px 0;
+        }
+
         button {
             background-color: white;
             color: #dc7633;
@@ -71,34 +71,28 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         button:hover {
             background-color: #dc7633;
             color: white;
             transform: scale(1.05);
         }
-        
-        section {
-            text-align: center;
+
+        .content {
+            display: none;
             padding: 20px;
         }
-        
-        h2 {
-            text-align: center;
+
+        .active {
+            display: block;
         }
 
         @media (max-width: 600px) {
             .banner {
                 flex-direction: column;
-                gap: 10px;
-                padding: 15px;
                 text-align: center;
             }
             
-            .social-links {
-                gap: 15px;
-            }
-
             .logo-main {
                 text-align: center;
             }
@@ -106,23 +100,68 @@
             .logo-sub {
                 position: static;
                 transform: none;
-                margin: 5px 0;
             }
         }
     </style>
 </head>
-    
+
 <body>
     <header class="banner">
         <div class="logo-main">來點好康</div>
-        <div class="logo-sub">蝦皮折扣碼</div>
+        <div class="logo-sub">蝦皮折扣碼 | 蝦幣轉盤</div>
         <div class="social-links">
             <a href="https://line.me/ti/g2/xXDlyouLBzF1gxC_LBA146yndkv5aZV_bQForw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default">Line社群</a>
             <a href="https://www.threads.net/@howcome_info">Threads</a>
             <a href="https://www.dcard.tw/@howcome_info">Dcard</a>
         </div>
     </header>
+
+    <div class="nav-buttons">
+        <button onclick="showContent('discounts')">折扣碼</button>
+        <button onclick="showContent('spin')">蝦幣轉盤</button>
+    </div>
+
+    <main>
+        <!-- 折扣碼區塊 -->
+        <section id="discounts" class="content active">
+            <p><i>點擊按鈕自動複製折扣碼，跳轉後直接貼上即可~</i></p>
+            <h2><strong><font color="#dc7633">全站$299-30!</font></strong></h2>
+            
+            <button onclick="copyredirect1('FMSP2')">全家取貨</button>
+            <button onclick="copyredirect2('SPSV2')">7-11取貨</button>
+            <button onclick="copyredirect1('M4PZX6YWD')">第三張</button>
+            <button onclick="copyredirect1('ECYEXN67M')">第四張(0:00輸入)</button>
+            <br><br>
+            <h2><strong><font color="#dc7633">商城$299-30!</font></strong></h2>
+            
+            <button onclick="copyredirect2('OK2APP')">OK取貨</button>
+            <button onclick="copyredirect1('HLAPP2')">萊爾富取貨</button>
+            <button onclick="copyredirect2('APP22FM')">全家取貨</button>
+            <button onclick="copyredirect1('APSEVEN2')">7-11取貨</button>
+            <br><br>
+        </section>
+
+        <!-- 蝦幣轉盤區塊 -->
+        <section id="spin" class="content">
+            <h2><strong><font color="#dc7633">每日蝦幣轉盤</font></strong></h2>
+            <p>假分享可多抽三次！</p>
+            
+            <button onclick="window.location.href='https://s.shopee.tw/2qEFpfJgGp'">抽99、199蝦</button>
+            <button onclick="window.location.href='https://s.shopee.tw/1LPS2yAzMJ'">抽100、1000蝦</button>
+            <button onclick="window.location.href='https://s.shopee.tw/8pVSymcsxQ'">抽10、50蝦</button>
+            <button onclick="window.location.href='https://s.shopee.tw/703onZFhaN'">抽1蝦</button>
+            
+        </section>
+    </main>
+
     <script>
+        function showContent(sectionId) {
+            document.querySelectorAll('.content').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
         function copyredirect1(text) {
             const tempInput1 = document.createElement("input");
             tempInput1.value = text;
@@ -130,8 +169,10 @@
             tempInput1.select();
             document.execCommand("copy");
             document.body.removeChild(tempInput1);
+            alert("折扣碼已複製！");
             window.location.href = "https://s.shopee.tw/50HhoPLjgx";
         }
+
         function copyredirect2(text) {
             const tempInput2 = document.createElement("input");
             tempInput2.value = text;
@@ -139,56 +180,9 @@
             tempInput2.select();
             document.execCommand("copy");
             document.body.removeChild(tempInput2);
+            alert("折扣碼已複製！");
             window.location.href = "https://s.shopee.tw/4VNLsbVDIQ";
         }
     </script>
-    <main>
-        <section>
-            <p><i> 點擊按鈕自動複製折扣碼，跳轉後直接貼上即可~ </i></p>
-            <h2><strong><font color="#dc7633">全站$299-30!</font></strong></h2>
-            
-            <button onclick="copyredirect1('FMSP2')">全家取貨</button>
-            <button onclick="copyredirect2('SPSV2')">7-11取貨</button>
-            <button onclick="copyredirect1('M4PZX6YWD')">第三張</button>
-            <button onclick="copyredirect1('ECYEXN67M')">第四張(0:00輸入)</button>
-            <br>
-            <br>
-            <h2><strong><font color="#dc7633">商城$299-30!</font></strong></h2>
-            
-            <button onclick="copyredirect2('OK2APP')">OK取貨</button>
-            <button onclick="copyredirect1('HLAPP2')">萊爾富取貨</button>
-            <button onclick="copyredirect2('APP22FM')">全家取貨</button>
-            <button onclick="copyredirect1('APSEVEN2')">7-11取貨</button>
-            <br>
-            <br>
-            <h2><strong><font color="#dc7633">各類別折扣碼</font></strong></h2>
-            <p>社群賣家</p>
-            <button onclick="copyredirect2('QRAFF40')">$499-40</button>
-            <button onclick="copyredirect1('AFFST60')">$499-60</button>
-            <button onclick="copyredirect2('QRAFF100')">$999-100</button>
-            <button onclick="copyredirect1('AFFST120')">$999-120</button>
-            <button onclick="copyredirect2('AFFST200')">$1099-200</button>
-            <button onclick="copyredirect1('FEBSIX60')">$499-60</button>
-            <p>流行類別</p>
-            <button onclick="copyredirect2('FSFEB251L')">$1200-90</button>
-            <button onclick="copyredirect1('FSFEB251M')">$2000-120</button>
-            <button onclick="copyredirect2('FSFEB251H')">$3000-180</button>
-            <p>運動戶外</p>
-            <button onclick="copyredirect2('LS2502A')">$599-30</button>
-            <button onclick="copyredirect1('LS2502B')">$999-50</button>
-            <button onclick="copyredirect2('LS2502C')">$1499-80</button>
-            <button onclick="copyredirect1('LS2502D')">$2000-120</button>
-            <button onclick="copyredirect2('25FEBQ1C')">$3000-180</button>
-            <button onclick="copyredirect1('25FEBO1A')">$12000-700</button>
-            <button onclick="copyredirect1('25FEBO2A')">$20000-1200</button>
-            <p>寵物用品</p>
-            <button onclick="copyredirect2('PETSDAY0202C')">$890-80</button>
-            <button onclick="copyredirect1('PETSDAY0202A')">$990-80</button>
-            <button onclick="copyredirect2('PETSDAY0202D')">$890-80</button>
-            <button onclick="copyredirect1('PETSDAY0202B')">$990-80</button>
-            <br>
-            <br>
-        </section>
-    </main>
 </body>
 </html>
