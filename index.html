@@ -10,6 +10,9 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .banner {
@@ -17,52 +20,44 @@
             width: 100%;
             padding: 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             position: relative;
         }
 
+        .logo-container {
+            text-align: center;
+        }
+
         .logo-main {
-            color: black;
+            color: white;
             font-size: 24px;
             font-weight: bold;
             position: relative;
             z-index: 1;
         }
 
-        .logo-sub {
-            color: white;
-            font-size: 16px;
-            position: absolute;
-            width: 100%;
-            text-align: center;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            pointer-events: none;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .social-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            transition: opacity 0.3s ease;
-        }
-
-        .social-links a:hover {
-            opacity: 0.8;
-        }
-
         .nav-buttons, .content {
             text-align: center;
             margin: 20px 0;
+        }
+
+        .nav-buttons button {
+            background-color: white;
+            color: #bf360c;
+            border: 2px solid #bf360c;
+            border-radius: 8px;
+            padding: 12px 24px;
+            margin: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-buttons button:hover {
+            background-color: #bf360c;
+            color: white;
+            transform: scale(1.05);
         }
 
         button {
@@ -92,28 +87,44 @@
             display: block;
         }
 
+        main {
+            flex: 1;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 0.8;
+        }
+
         @media (max-width: 600px) {
             .banner {
-                flex-direction: column;
-                text-align: center;
                 padding: 15px;
-                gap: 10px;
             }
 
             .logo-main {
                 font-size: 22px;
             }
 
-            .logo-sub {
-                position: static;
-                transform: none;
-                font-size: 14px;
-                margin: 5px 0;
-            }
-
             .social-links {
                 flex-direction: column;
-                align-items: center;
                 gap: 10px;
             }
         }
@@ -122,12 +133,8 @@
 
 <body>
     <header class="banner">
-        <div class="logo-main">來點好康</div>
-        <div class="logo-sub">蝦皮折扣碼 & 蝦幣轉盤</div>
-        <div class="social-links">
-            <a href="https://line.me/ti/g2/xXDlyouLBzF1gxC_LBA146yndkv5aZV_bQForw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default">Line社群</a>
-            <a href="https://www.threads.net/@howcome_info">Threads</a>
-            <a href="https://www.dcard.tw/@howcome_info">Dcard</a>
+        <div class="logo-container">
+            <div class="logo-main">來點好康</div>
         </div>
     </header>
 
@@ -138,16 +145,20 @@
 
     <main>
         <section id="discounts" class="content active">
-            <p><i>點擊按鈕自動複製折扣碼，跳轉後直接貼上即可~</i></p>
             <h2><strong><font color="#dc7633">蝦皮特選</font></strong></h2>
+            <p>點擊後自動複製，跳轉後直接貼上~</p>
             
             <button onclick="copyredirect1('SCSORYN3')">$299-30</button>
             <button onclick="copyredirect2('SCSONRJW')">$299-30</button>
             <button onclick="copyredirect2('SCSO36UV')">$299-30</button>
+            <!-- comment -->
+            <!-- comment -->
             <br><br>
             <button onclick="copyredirect1('SCSOKHPU')">$499-50</button>
             <button onclick="copyredirect1('SCSOJ5X3')">$499-50</button>
             <button onclick="copyredirect1('SCSODVYV')">$499-30</button>
+            <!-- comment -->
+            <!-- comment -->
             <br><br>
         </section>
 
@@ -157,10 +168,19 @@
 
             <button onclick="window.location.href='https://s.shopee.tw/2qEFpfJgGp'">抽99、199蝦</button>
             <button onclick="window.location.href='https://s.shopee.tw/1LPS2yAzMJ'">抽100、1000蝦</button>
+            <br><br>
             <button onclick="window.location.href='https://s.shopee.tw/8pVSymcsxQ'">抽10、50蝦</button>
             <button onclick="window.location.href='https://s.shopee.tw/703onZFhaN'">抽1蝦</button>
         </section>
     </main>
+
+    <footer class="banner">
+        <div class="social-links">
+            <a href="https://line.me/ti/g2/xXDlyouLBzF1gxC_LBA146yndkv5aZV_bQForw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default">Line社群</a>
+            <a href="https://www.threads.net/@howcome_info">Threads</a>
+            <a href="https://www.dcard.tw/@howcome_info">Dcard</a>
+        </div>
+    </footer>
 
     <script>
         function showContent(sectionId) {
