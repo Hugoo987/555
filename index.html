@@ -149,8 +149,8 @@
             <p>點擊後自動複製，跳轉後直接貼上~</p>
             
             <button onclick="copyredirect1('SCSORYN3')">$299-30</button>
-            <button onclick="copyredirect2('SCSONRJW')">$299-30</button>
-            <button onclick="copyredirect2('SCSO36UV')">$299-30</button>
+            <button onclick="copyredirect1('SCSONRJW')">$299-30</button>
+            <button onclick="copyredirect1('SCSO36UV')">$299-30</button>
             <!-- comment -->
             <!-- comment -->
             <br><br>
@@ -198,19 +198,10 @@
             document.execCommand("copy");
             document.body.removeChild(tempInput1);
             alert("折扣碼已複製！");
-            window.location.href = "https://s.shopee.tw/50HhoPLjgx";
-        }
-
-        function copyredirect2(text) {
-            const tempInput2 = document.createElement("input");
-            tempInput2.value = text;
-            document.body.appendChild(tempInput2);
-            tempInput2.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput2);
-            alert("折扣碼已複製！");
             window.location.href = "https://s.shopee.tw/4VNLsbVDIQ";
         }
+
+
     </script>
 </body>
 </html>
