@@ -284,9 +284,8 @@
     </header>
 
     <div class="nav-buttons">
-        <button onclick="showContent('discounts')" id="btn-discounts" class="active"><strong>1/18折扣碼</strong></button>
-        <button onclick="showContent('march-discounts')" id="btn-march"><strong>其他折扣碼</strong></button>
-        <button onclick="showContent('spin')" id="btn-spin"><strong>蝦幣轉盤</strong></button>
+        <button onclick="showContent('discounts')" id="btn-discounts" class="active"><strong>1/18蝦皮折扣碼</strong></button>
+        <button onclick="showContent('march-discounts')" id="btn-march"><strong>1月酷澎折扣碼</strong></button>
     </div>
 
     <main>
@@ -296,7 +295,7 @@
             <div class="button-section">
                 <h3><strong>全站折價、免運 一鍵領</strong></h3>
                 <button class="special-button" onclick="openExternal('https://s.shopee.tw/1gCQJkbRWP')">活動頁</button>
-                 <button class="special-button" onclick="openExternal('https://s.shopee.tw/14CKUyfK9')">免費試用蝦皮VIP</button>
+                <button class="special-button" onclick="openExternal('https://s.shopee.tw/14CKUyfK9')">免費試用蝦皮VIP</button>
             </div>
 
             <div class="button-section">
@@ -329,12 +328,23 @@
         </section>
 
         <section id="march-discounts" class="content">
+            <p>點擊後自動複製，跳轉後至優惠券．禮卷處貼上~</p>
             <div class="button-section">
-                <h3><strong>其他折扣碼</strong></h3>
-                <p>即將更新...</p>
+                <button class="special-button" onclick="openExternal('https://vbshoptrax.com/track/clicks/9197/c627c2bc980427dbf88bec23d62e974123694ddf2aabebfd0669b513234652eed671a3ea103a9e71?t=https%253A%252F%252Fpages.tw.coupang.com%252Ff%252F2781')">指定品牌鞋款4折起!</button>
+                <button onclick="copyAndRedirectcoupang('Y26NC200')">新客專屬$800-200</button>
+            </div>
+            
+            <div class="button-section">
+                <h3><strong>隱藏版折扣碼</strong></h3>    
+                <button onclick="copyAndRedirectcoupang('Y26JAN50')">全站$899-50</button>
+                <button onclick="copyAndRedirectcoupang('Y26JAN1002')">全站$1499-100</button>
+                
+                 
+            </div>
             </div>
         </section>
-
+        
+        <!--
         <section id="spin" class="content">
             <div class="button-section">
                 <h3><strong>蝦幣轉盤</strong></h3>
@@ -346,6 +356,8 @@
                 <button onclick="openExternal('https://s.shopee.tw/2qFjmUwoMN')">抽1蝦</button>
             </div>
         </section>
+        -->
+        
     </main>
 
     <footer>
@@ -401,10 +413,15 @@
         function openExternal(url) {
             window.open(url, '_blank', 'noopener,noreferrer');
         }
+        
 
         function copyAndRedirect(code) {
             copyToClipboard(code);
             setTimeout(() => openExternal('https://s.shopee.tw/7ASd8GEZ4j'), 300);
+        }
+        function copyAndRedirectcoupang(code) {
+            copyToClipboard(code);
+            setTimeout(() => openExternal('https://twcouponcenter.com/track/clicks/9197/c627c2bc980427dbf88bec23d62e974123694ddf2aabebfd0669b513234652eed671a3ea103a9e71?subid_1=coupon'), 300);
         }
     </script>
 </body>
