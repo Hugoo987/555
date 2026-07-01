@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>來點好康 | 蝦皮 & 酷澎折扣碼・省錢攻略</title>
+    <link rel="icon" href="images/thumb-logo.png">
+    <link rel="apple-touch-icon" href="images/thumb-logo.png">
     <style>
         :root {
             --bg-top: #fff8ef;
@@ -73,6 +75,13 @@
         }
 
         .brand .thumb { font-size: 1.5rem; }
+        .brand .logo-img {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            object-fit: cover;
+            vertical-align: middle;
+        }
 
         .bell {
             position: relative;
@@ -103,6 +112,21 @@
             padding: 46px 16px 30px;
             overflow: hidden;
         }
+
+        /* 真實橫幅插畫 */
+        .hero-img {
+            display: block;
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            margin: 0 auto;
+        }
+        .hero-banner { padding: 20px 16px 10px; }
+        /* 圖片載入失敗時，隱藏圖片、改用下方的表情符號版 */
+        .hero-fallback { display: none; }
+        .hero.img-fallback { padding: 46px 16px 30px; }
+        .hero.img-fallback .hero-img { display: none; }
+        .hero.img-fallback .hero-fallback { display: block; }
 
         .hero-title {
             display: inline-block;
@@ -505,21 +529,27 @@
     <!-- ===== Header ===== -->
     <header class="site">
         <div class="site-inner">
-            <div class="brand"><span class="thumb">👍</span>來點好康</div>
+            <div class="brand"><img class="logo-img" src="images/thumb-logo.png" alt="來點好康" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'thumb',textContent:'👍'}))">來點好康</div>
             <button class="bell" aria-label="通知" onclick="openExternal('https://www.threads.net/@howcome_info')">🔔</button>
         </div>
     </header>
 
     <!-- ===== Hero ===== -->
-    <section class="hero">
-        <span class="doodle d1">⭐</span>
-        <span class="doodle d2">🛒</span>
-        <span class="doodle d3">💲</span>
-        <span class="doodle d4">👍</span>
-        <span class="doodle d5">✨</span>
-        <h1 class="hero-title">來點好康</h1>
-        <div><span class="hero-pill">好康資訊・優惠折扣・省錢攻略・好物推薦</span></div>
-        <p class="hero-sub">一起發現更多優惠，讓生活更聰明更好買！</p>
+    <section class="hero hero-banner">
+        <img class="hero-img" src="images/hero-banner.png"
+             alt="來點好康 - 好康資訊・優惠折扣・省錢攻略・好物推薦"
+             onerror="this.closest('.hero').classList.add('img-fallback')">
+        <!-- 圖片載入失敗時的備援版本（表情符號） -->
+        <div class="hero-fallback">
+            <span class="doodle d1">⭐</span>
+            <span class="doodle d2">🛒</span>
+            <span class="doodle d3">💲</span>
+            <span class="doodle d4">👍</span>
+            <span class="doodle d5">✨</span>
+            <h1 class="hero-title">來點好康</h1>
+            <div><span class="hero-pill">好康資訊・優惠折扣・省錢攻略・好物推薦</span></div>
+            <p class="hero-sub">一起發現更多優惠，讓生活更聰明更好買！</p>
+        </div>
     </section>
 
     <main class="wrap">
@@ -657,7 +687,7 @@
     <!-- ===== Footer ===== -->
     <footer class="site">
         <div class="foot-inner">
-            <div class="foot-brand"><span>👍</span>來點好康 <span class="tag">你的省錢好幫手</span></div>
+            <div class="foot-brand"><img class="logo-img" src="images/thumb-logo.png" alt="來點好康" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'👍'}))">來點好康 <span class="tag">你的省錢好幫手</span></div>
             <div class="foot-copy">© 2025 來點好康 All rights reserved.</div>
         </div>
     </footer>
