@@ -157,20 +157,24 @@
         .d3 { top: 30px;  right: 8%; font-size: 2.4rem; animation-delay: 1.1s; }
         .d4 { top: 150px; right: 5%; font-size: 3.2rem; animation-delay: .3s; }
         .d5 { top: 70px;  right: 26%; font-size: 1.4rem; color: var(--orange); animation-delay: 1.4s; }
+        .d6 { top: 195px; left: 9%;  font-size: 2.4rem; animation-delay: .9s; }
         @keyframes float {
             0%,100% { transform: translateY(0) rotate(-3deg); }
             50%     { transform: translateY(-12px) rotate(3deg); }
         }
 
         @media (max-width: 640px) {
-            .hero { padding: 28px 14px 20px; }
+            .hero { padding: 28px 14px 46px; }
             .hero-title { letter-spacing: 2px; }
             .hero-pill { font-size: 0.85rem; padding: 8px 16px; margin: 18px 0 12px; }
             .hero-sub { font-size: 0.92rem; }
             .doodle { font-size: 1.5rem !important; }
-            .d1 { top: 8px; left: 4%; font-size: 2rem !important; }
-            .d4 { top: 8px; right: 4%; font-size: 2rem !important; }
-            .d2, .d3, .d5 { display: none; }
+            .d1 { top: 8px; left: 4%; font-size: 1.9rem !important; }
+            .d4 { top: 8px; right: 4%; font-size: 1.9rem !important; }
+            .d2 { top: auto; bottom: 8px; left: 5%; font-size: 1.7rem !important; }
+            .d6 { top: auto; bottom: 8px; right: 5%; font-size: 1.7rem !important; }
+            .d5 { top: 38px; right: 15%; font-size: 1.05rem !important; }
+            .d3 { display: none; }
 
             .tabs { gap: 10px; margin: 6px 0 16px; }
             .tab { padding: 13px 6px; font-size: 1rem; border-radius: 14px; }
@@ -280,6 +284,13 @@
         .sec-more:hover { background: #ffe9cf; }
 
         /* ---------- Coupon grid ---------- */
+        .tab-note {
+            text-align: center;
+            color: var(--muted);
+            font-weight: 700;
+            margin: 0 0 16px;
+        }
+
         .coupon-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 320px));
@@ -536,6 +547,7 @@
         <span class="doodle d3">💲</span>
         <span class="doodle d4">👍</span>
         <span class="doodle d5">✨</span>
+        <span class="doodle d6">🛍️</span>
         <h1 class="hero-title">來點好康</h1>
         <div><span class="hero-pill">好康資訊・優惠折扣・省錢攻略・好物推薦</span></div>
         <p class="hero-sub">一起發現更多優惠，讓生活更聰明更好買！</p>
@@ -577,6 +589,7 @@
             <div class="sec-head">
                 <h2><span class="star">⭐</span> 今日精選折扣碼</h2>
             </div>
+            <p class="tab-note">點擊後自動複製，跳轉後至優惠券處貼上～</p>
 
             <!-- 折扣碼卡片：要新增就複製一張 .coupon 區塊，改標題/金額/代碼即可 -->
             <div class="coupon-grid">
@@ -598,7 +611,7 @@
             <div class="sec-head">
                 <h2><span class="star">⭐</span> 酷澎精選折扣碼</h2>
             </div>
-            <p style="text-align:center;color:var(--muted);font-weight:700;margin-bottom:16px;">點擊後自動複製，跳轉後至「優惠券・禮券」處貼上～</p>
+            <p class="tab-note">點擊後自動複製，跳轉後至優惠券處貼上～</p>
 
             <div class="coupon-grid">
                 <div class="coupon">
