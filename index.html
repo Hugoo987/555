@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>來點好康 | 蝦皮 & 酷澎折扣碼・省錢攻略</title>
-    <link rel="icon" href="images/thumb-logo.png">
-    <link rel="apple-touch-icon" href="images/thumb-logo.png">
     <style>
         :root {
             --bg-top: #fff8ef;
@@ -84,26 +82,19 @@
         }
 
         .bell {
-            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 40px;
             height: 40px;
             border-radius: 50%;
             border: 1.5px solid var(--line);
             background: var(--card);
-            font-size: 1.1rem;
+            color: var(--brown);
             cursor: pointer;
-            transition: transform 0.15s, box-shadow 0.15s;
+            transition: transform 0.15s, box-shadow 0.15s, color 0.15s;
         }
-        .bell:hover { transform: translateY(-2px); box-shadow: 0 6px 12px var(--shadow); }
-        .bell::after {
-            content: "";
-            position: absolute;
-            top: 8px; right: 9px;
-            width: 8px; height: 8px;
-            background: var(--orange-2);
-            border: 2px solid var(--card);
-            border-radius: 50%;
-        }
+        .bell:hover { transform: translateY(-2px); box-shadow: 0 6px 12px var(--shadow); color: var(--orange-2); }
 
         /* ---------- Hero ---------- */
         .hero {
@@ -113,20 +104,6 @@
             overflow: hidden;
         }
 
-        /* 真實橫幅插畫 */
-        .hero-img {
-            display: block;
-            width: 100%;
-            max-width: 900px;
-            height: auto;
-            margin: 0 auto;
-        }
-        .hero-banner { padding: 20px 16px 10px; }
-        /* 圖片載入失敗時，隱藏圖片、改用下方的表情符號版 */
-        .hero-fallback { display: none; }
-        .hero.img-fallback { padding: 46px 16px 30px; }
-        .hero.img-fallback .hero-img { display: none; }
-        .hero.img-fallback .hero-fallback { display: block; }
 
         .hero-title {
             display: inline-block;
@@ -236,7 +213,7 @@
         /* ---------- Feature strip ---------- */
         .feature-strip {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             background: var(--card);
             border: 1.5px solid var(--line);
             border-radius: 22px;
@@ -529,27 +506,23 @@
     <!-- ===== Header ===== -->
     <header class="site">
         <div class="site-inner">
-            <div class="brand"><img class="logo-img" src="images/thumb-logo.png" alt="來點好康" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'thumb',textContent:'👍'}))">來點好康</div>
-            <button class="bell" aria-label="通知" onclick="openExternal('https://www.threads.net/@howcome_info')">🔔</button>
+            <div class="brand"><span class="thumb">👍</span>來點好康</div>
+            <button class="bell" aria-label="追蹤 Threads" onclick="openExternal('https://www.threads.net/@howcome_info')">
+                <svg viewBox="0 0 192 192" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M141.537 88.988c-.62-.297-1.25-.583-1.887-.858-1.114-20.523-12.33-32.278-31.16-32.398-.085-.001-.17-.001-.255-.001-11.263 0-20.632 4.809-26.402 13.56l10.356 7.104c4.31-6.539 11.077-7.933 16.055-7.933.057 0 .114 0 .17.001 6.2.04 10.877 1.843 13.9 5.362 2.2 2.563 3.671 6.105 4.398 10.573-5.48-.931-11.407-1.217-17.743-.851-17.847 1.028-29.313 11.435-28.543 25.907.39 7.344 4.049 13.663 10.309 17.793 5.293 3.492 12.108 5.2 19.19 4.81 9.36-.512 16.703-4.084 21.828-10.62 3.892-4.965 6.35-11.398 7.44-19.494 4.475 2.702 7.79 6.257 9.622 10.529 3.114 7.259 3.295 19.19-6.437 28.916-8.529 8.52-18.784 12.204-34.282 12.318-17.19-.127-30.196-5.638-38.66-16.377-7.926-10.059-12.06-24.288-12.197-42.309.137-18.02 4.271-32.25 12.197-42.309 8.464-10.739 21.47-16.25 38.66-16.377 17.315.128 30.548 5.666 39.343 16.464 4.312 5.295 7.565 11.951 9.699 19.795l12.114-3.234c-2.588-9.652-6.659-17.964-12.166-24.729C151.937 6.354 135.487.194 114.407 0h-.081C93.246.194 77.001 6.377 66.031 20.35 56.269 32.783 51.202 50.019 51.032 79.988v.024c.17 29.969 5.237 47.205 14.999 59.638 10.97 13.973 27.213 20.158 48.294 20.351h.081c18.744-.13 31.99-5.043 42.902-15.955 14.28-14.278 13.851-32.216 9.253-43.10-3.301-7.796-9.599-14.14-18.223-18.34Z"/></svg>
+            </button>
         </div>
     </header>
 
     <!-- ===== Hero ===== -->
-    <section class="hero hero-banner">
-        <img class="hero-img" src="images/hero-banner.png"
-             alt="來點好康 - 好康資訊・優惠折扣・省錢攻略・好物推薦"
-             onerror="this.closest('.hero').classList.add('img-fallback')">
-        <!-- 圖片載入失敗時的備援版本（表情符號） -->
-        <div class="hero-fallback">
-            <span class="doodle d1">⭐</span>
-            <span class="doodle d2">🛒</span>
-            <span class="doodle d3">💲</span>
-            <span class="doodle d4">👍</span>
-            <span class="doodle d5">✨</span>
-            <h1 class="hero-title">來點好康</h1>
-            <div><span class="hero-pill">好康資訊・優惠折扣・省錢攻略・好物推薦</span></div>
-            <p class="hero-sub">一起發現更多優惠，讓生活更聰明更好買！</p>
-        </div>
+    <section class="hero">
+        <span class="doodle d1">⭐</span>
+        <span class="doodle d2">🛒</span>
+        <span class="doodle d3">💲</span>
+        <span class="doodle d4">👍</span>
+        <span class="doodle d5">✨</span>
+        <h1 class="hero-title">來點好康</h1>
+        <div><span class="hero-pill">好康資訊・優惠折扣・省錢攻略・好物推薦</span></div>
+        <p class="hero-sub">一起發現更多優惠，讓生活更聰明更好買！</p>
     </section>
 
     <main class="wrap">
@@ -561,39 +534,32 @@
 
         <!-- ===== Update bar ===== -->
         <div class="update-bar">
-            <span>📢 每日更新最新優惠，記得先領券再購物！</span>
-            <span class="time">更新時間：<span id="update-time">—</span></span>
+            <span class="time">🕒 最後更新時間：<span id="update-time">—</span></span>
         </div>
 
         <!-- ===== Shopee tab ===== -->
         <section id="discounts" class="tab-panel">
             <!-- feature strip -->
             <div class="feature-strip">
-                <div class="feature" onclick="openExternal('https://s.shopee.tw/2Vpbp6Mq4f')">
+                <div class="feature" onclick="openExternal('https://s.shopee.tw/3B5TXCT9Ye')">
                     <span class="ic">🎟️</span>
-                    <div class="t">優惠券總覽</div>
+                    <div class="t">活動頁優惠卷</div>
                     <div class="s">蝦皮各種優惠券</div>
                 </div>
-                <div class="feature" onclick="openExternal('https://s.shopee.tw/1LcdJNBRsH')">
+                <div class="feature" onclick="openExternal('https://s.shopee.tw/AAFDs1CW3Y')">
                     <span class="ic">🎁</span>
-                    <div class="t">免費領蝦皮PLUS</div>
+                    <div class="t">免費試用蝦皮VIP</div>
                     <div class="s">30天免費試用</div>
                 </div>
-                <div class="feature" onclick="openExternal('https://s.shopee.tw/2Vpbp6Mq4f')">
+                <div class="feature" onclick="openExternal('https://s.shopee.tw/6pyltxBHhS')">
                     <span class="ic">🚚</span>
                     <div class="t">免運券專區</div>
                     <div class="s">天天領免運</div>
-                </div>
-                <div class="feature" onclick="openExternal('https://s.shopee.tw/2Vpbp6Mq4f')">
-                    <span class="ic">🪙</span>
-                    <div class="t">蝦幣回饋</div>
-                    <div class="s">最高回饋15%</div>
                 </div>
             </div>
 
             <div class="sec-head">
                 <h2><span class="star">⭐</span> 今日精選折扣碼</h2>
-                <button class="sec-more" onclick="openExternal('https://s.shopee.tw/2Vpbp6Mq4f')">查看全部 ›</button>
             </div>
 
             <!-- 折扣碼卡片：要新增就複製一張 .coupon 區塊，改標題/金額/代碼即可 -->
@@ -612,12 +578,12 @@
                 <div class="coupon">
                     <span class="ribbon">限時活動</span>
                     <div class="coupon-body">
-                        <div class="kind">免費試用蝦皮 PLUS</div>
+                        <div class="kind">免費試用蝦皮 VIP</div>
                         <div class="amount" style="font-size:1.7rem; padding:10px 0;">30天免費</div>
                         <div class="desc">新會員專屬・省更多運費</div>
-                        <button class="copy-btn" onclick="openExternal('https://s.shopee.tw/1LcdJNBRsH')">前往領取</button>
+                        <button class="copy-btn" onclick="openExternal('https://s.shopee.tw/AAFDs1CW3Y')">前往領取</button>
                     </div>
-                    <div class="coupon-side" onclick="openExternal('https://s.shopee.tw/1LcdJNBRsH')" title="前往">›</div>
+                    <div class="coupon-side" onclick="openExternal('https://s.shopee.tw/AAFDs1CW3Y')" title="前往">›</div>
                 </div>
             </div>
         </section>
@@ -626,7 +592,6 @@
         <section id="march-discounts" class="tab-panel" style="display:none;">
             <div class="sec-head">
                 <h2><span class="star">⭐</span> 酷澎精選折扣碼</h2>
-                <button class="sec-more" onclick="showContent('discounts')">看蝦皮 ›</button>
             </div>
             <p style="text-align:center;color:var(--muted);font-weight:700;margin-bottom:16px;">點擊後自動複製，跳轉後至「優惠券・禮券」處貼上～</p>
 
@@ -648,17 +613,6 @@
         <div class="join-bar">
             <span class="txt">📣 更多專屬折扣碼都在社群，快加入不錯過！</span>
             <button onclick="openExternal('https://line.me/ti/g2/xXDlyouLBzF1gxC_LBA146yndkv5aZV_bQForw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default')">立即加入</button>
-        </div>
-
-        <!-- ===== Info tiles ===== -->
-        <div class="sec-head">
-            <h2><span class="star">🌟</span> 每日更新・好康不漏接</h2>
-        </div>
-        <div class="info-grid">
-            <div class="info"><span class="ic">📅</span><div class="t">每日更新</div><div class="s">最新優惠不漏接</div></div>
-            <div class="info"><span class="ic">🏷️</span><div class="t">獨家折扣碼</div><div class="s">社群限定優惠</div></div>
-            <div class="info"><span class="ic">💰</span><div class="t">省錢攻略</div><div class="s">聰明買更划算</div></div>
-            <div class="info"><span class="ic">🛍️</span><div class="t">好物推薦</div><div class="s">精選商品分享</div></div>
         </div>
 
         <!-- ===== Community ===== -->
@@ -687,7 +641,7 @@
     <!-- ===== Footer ===== -->
     <footer class="site">
         <div class="foot-inner">
-            <div class="foot-brand"><img class="logo-img" src="images/thumb-logo.png" alt="來點好康" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'👍'}))">來點好康 <span class="tag">你的省錢好幫手</span></div>
+            <div class="foot-brand">來點好康 <span class="tag">你的省錢好幫手</span></div>
             <div class="foot-copy">© 2025 來點好康 All rights reserved.</div>
         </div>
     </footer>
