@@ -162,18 +162,23 @@
             0%,100% { transform: translateY(0) rotate(-3deg); }
             50%     { transform: translateY(-12px) rotate(3deg); }
         }
+        /* 手機用：浮動幅度較小，避免飄向文字 */
+        @keyframes floatSm {
+            0%,100% { transform: translateY(0) rotate(-3deg); }
+            50%     { transform: translateY(-6px) rotate(3deg); }
+        }
 
         @media (max-width: 640px) {
             .hero { padding: 28px 14px 46px; }
             .hero-title { letter-spacing: 2px; }
             .hero-pill { font-size: 0.85rem; padding: 8px 16px; margin: 18px 0 12px; }
             .hero-sub { font-size: 0.92rem; }
-            .doodle { font-size: 1.5rem !important; }
-            .d1 { top: 8px; left: 4%; font-size: 1.9rem !important; }
-            .d4 { top: 8px; right: 4%; font-size: 1.9rem !important; }
-            .d2 { top: auto; bottom: 8px; left: 5%; font-size: 1.7rem !important; }
-            .d6 { top: auto; bottom: 8px; right: 5%; font-size: 1.7rem !important; }
-            .d5 { top: 38px; right: 15%; font-size: 1.05rem !important; }
+            .doodle { animation-name: floatSm; }
+            .d1 { top: 6px; left: 3%; font-size: clamp(1.5rem, 7vw, 2rem) !important; }
+            .d4 { top: 6px; right: 3%; font-size: clamp(1.5rem, 7vw, 2rem) !important; }
+            .d2 { top: auto; bottom: 6px; left: 4%; font-size: clamp(1.3rem, 6vw, 1.7rem) !important; }
+            .d6 { top: auto; bottom: 6px; right: 4%; font-size: clamp(1.3rem, 6vw, 1.7rem) !important; }
+            .d5 { top: 34px; right: 14%; font-size: clamp(0.9rem, 4vw, 1.1rem) !important; }
             .d3 { display: none; }
 
             .tabs { gap: 10px; margin: 6px 0 16px; }
