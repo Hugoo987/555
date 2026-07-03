@@ -592,9 +592,10 @@
             <button class="tab" id="btn-march" onclick="showContent('march-discounts')">酷澎折扣碼</button>
         </div>
 
-        <!-- ===== Update bar ===== -->
+        <!-- ===== Update bar =====
+             每次更新折扣碼時，記得順手改下面這個日期 -->
         <div class="update-bar">
-            <span class="time">🕒 最後更新時間：<span id="update-time">—</span></span>
+            <span class="time">🕒 最後更新時間：<span id="update-time">2026/07/03</span></span>
         </div>
 
         <!-- ===== Shopee tab ===== -->
@@ -753,14 +754,6 @@
             copyToClipboard(code);
             setTimeout(() => openExternal('https://coupa.ng/cnLsCp'), 300);
         }
-
-        // 更新時間顯示為當下
-        (function setUpdateTime() {
-            const d = new Date();
-            const p = n => String(n).padStart(2, '0');
-            document.getElementById('update-time').textContent =
-                d.getFullYear() + '/' + p(d.getMonth() + 1) + '/' + p(d.getDate()) + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
-        })();
     </script>
 </body>
 </html>
