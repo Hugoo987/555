@@ -386,8 +386,9 @@
         .code-btn:hover { filter: brightness(1.06); transform: translateY(-2px); box-shadow: 0 8px 16px rgba(255, 150, 60, 0.4); }
         .code-btn:active { transform: translateY(0); }
 
-        /* 無側邊複製條的票券：隱藏齒孔 */
-        .coupon.no-side::before, .coupon.no-side::after { display: none; }
+        /* 純裝飾的票券側條（多代碼卡片用）：剪刀貼齊裁切線 */
+        .coupon-side.deco { cursor: default; color: var(--orange-soft); font-size: 1.05rem; }
+        .coupon-side.deco:hover { color: var(--orange-soft); background: transparent; }
 
         .coupon-side {
             width: 50px;
@@ -624,7 +625,7 @@
 
             <!-- 折扣碼卡片：要新增就複製一張 .coupon 區塊，改標題/金額/代碼即可 -->
             <div class="coupon-grid">
-                <div class="coupon no-side">
+                <div class="coupon">
                     <span class="ribbon">超取限定</span>
                     <div class="coupon-body">
                         <div class="kind">全站折價券</div>
@@ -635,9 +636,10 @@
                             <button class="code-btn" onclick="copyAndRedirect('FMSP2607')">全家取貨</button>
                         </div>
                     </div>
+                    <div class="coupon-side deco" aria-hidden="true">✂</div>
                 </div>
 
-                <div class="coupon no-side">
+                <div class="coupon">
                     <span class="ribbon">超取限定</span>
                     <div class="coupon-body">
                         <div class="kind">商城折價券</div>
@@ -649,6 +651,7 @@
                             <button class="code-btn" onclick="copyAndRedirect('HLAPP2607')">萊爾富取貨</button>
                         </div>
                     </div>
+                    <div class="coupon-side deco" aria-hidden="true">✂</div>
                 </div>
             </div>
         </section>
