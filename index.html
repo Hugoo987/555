@@ -362,6 +362,33 @@
         .coupon .copy-btn:hover { filter: brightness(1.05); transform: translateY(-2px); box-shadow: 0 9px 18px rgba(255, 150, 60, 0.4); }
         .coupon .copy-btn:active { transform: translateY(0); }
 
+        /* 一張券多個代碼（超商別）時的按鈕列 */
+        .code-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        .code-btn {
+            flex: 1 1 auto;
+            min-width: 96px;
+            padding: 10px 12px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f7941f, #e97606);
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255, 150, 60, 0.32);
+            transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+        }
+        .code-btn:hover { filter: brightness(1.06); transform: translateY(-2px); box-shadow: 0 8px 16px rgba(255, 150, 60, 0.4); }
+        .code-btn:active { transform: translateY(0); }
+
+        /* 無側邊複製條的票券：隱藏齒孔 */
+        .coupon.no-side::before, .coupon.no-side::after { display: none; }
+
         .coupon-side {
             width: 50px;
             border-left: 2px dashed var(--orange-soft);
@@ -597,15 +624,31 @@
 
             <!-- 折扣碼卡片：要新增就複製一張 .coupon 區塊，改標題/金額/代碼即可 -->
             <div class="coupon-grid">
-                <div class="coupon">
-                    <span class="ribbon">隱藏版</span>
+                <div class="coupon no-side">
+                    <span class="ribbon">超取限定</span>
                     <div class="coupon-body">
                         <div class="kind">全站折價券</div>
-                        <div class="amount">100-20</div>
-                        <div class="desc">滿100可折20元</div>
-                        <button class="copy-btn" onclick="copyAndRedirect('0625SHAF')">複製折扣碼</button>
+                        <div class="amount">299-30</div>
+                        <div class="desc">滿299可折30元・點超商複製代碼</div>
+                        <div class="code-row">
+                            <button class="code-btn" onclick="copyAndRedirect('SVSP2607')">7-11取貨</button>
+                            <button class="code-btn" onclick="copyAndRedirect('FMSP2607')">全家取貨</button>
+                        </div>
                     </div>
-                    <div class="coupon-side" onclick="copyAndRedirect('0625SHAF')" title="複製折扣碼" role="button" aria-label="複製折扣碼">⧉</div>
+                </div>
+
+                <div class="coupon no-side">
+                    <span class="ribbon">超取限定</span>
+                    <div class="coupon-body">
+                        <div class="kind">商城折價券</div>
+                        <div class="amount">299-30</div>
+                        <div class="desc">滿299可折30元・點超商複製代碼</div>
+                        <div class="code-row">
+                            <button class="code-btn" onclick="copyAndRedirect('SVAP2607')">7-11取貨</button>
+                            <button class="code-btn" onclick="copyAndRedirect('FMAPP2607')">全家取貨</button>
+                            <button class="code-btn" onclick="copyAndRedirect('HLAPP2607')">萊爾富取貨</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
