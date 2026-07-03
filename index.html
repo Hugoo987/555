@@ -351,7 +351,7 @@
             padding: 11px 0;
             border: none;
             border-radius: 12px;
-            background: linear-gradient(135deg, #ffb457, #ff9838);
+            background: linear-gradient(135deg, #f7941f, #e97606);
             color: #fff;
             font-weight: 800;
             font-size: 1rem;
@@ -522,7 +522,7 @@
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, #ffb64f, #ff9a3d);
+            background: linear-gradient(135deg, #f7941f, #e97606);
             color: #fff;
             padding: 13px 24px;
             border-radius: 16px;
@@ -547,12 +547,12 @@
 
     <!-- ===== Hero ===== -->
     <section class="hero">
-        <span class="doodle d1">⭐</span>
-        <span class="doodle d2">🛒</span>
-        <span class="doodle d3">💲</span>
-        <span class="doodle d4">👍</span>
-        <span class="doodle d5">✨</span>
-        <span class="doodle d6">🛍️</span>
+        <span class="doodle d1" aria-hidden="true">⭐</span>
+        <span class="doodle d2" aria-hidden="true">🛒</span>
+        <span class="doodle d3" aria-hidden="true">💲</span>
+        <span class="doodle d4" aria-hidden="true">👍</span>
+        <span class="doodle d5" aria-hidden="true">✨</span>
+        <span class="doodle d6" aria-hidden="true">🛍️</span>
         <h1 class="hero-title">來點好康</h1>
         <div><span class="hero-pill">好康資訊・優惠折扣・省錢攻略・好物推薦</span></div>
     </section>
@@ -605,7 +605,7 @@
                         <div class="desc">滿100可折20元</div>
                         <button class="copy-btn" onclick="copyAndRedirect('0625SHAF')">複製折扣碼</button>
                     </div>
-                    <div class="coupon-side" onclick="copyAndRedirect('0625SHAF')" title="複製折扣碼">⧉</div>
+                    <div class="coupon-side" onclick="copyAndRedirect('0625SHAF')" title="複製折扣碼" role="button" aria-label="複製折扣碼">⧉</div>
                 </div>
             </div>
         </section>
@@ -626,7 +626,7 @@
                         <div class="desc">滿500可折80元</div>
                         <button class="copy-btn" onclick="copyAndRedirectcoupang('Y26JULY80')">複製折扣碼</button>
                     </div>
-                    <div class="coupon-side" onclick="copyAndRedirectcoupang('Y26JULY80')" title="複製折扣碼">⧉</div>
+                    <div class="coupon-side" onclick="copyAndRedirectcoupang('Y26JULY80')" title="複製折扣碼" role="button" aria-label="複製折扣碼">⧉</div>
                 </div>
             </div>
         </section>
@@ -669,13 +669,25 @@
             else if (sectionId === 'march-discounts') document.getElementById('btn-march').classList.add('active');
         }
 
-        function copyToClipboard(text) {
+        function copyFallback(text) {
             const tempTextArea = document.createElement('textarea');
             tempTextArea.value = text;
+            tempTextArea.setAttribute('readonly', '');
+            tempTextArea.style.position = 'fixed';
+            tempTextArea.style.opacity = '0';
             document.body.appendChild(tempTextArea);
             tempTextArea.select();
+            tempTextArea.setSelectionRange(0, text.length);
             document.execCommand('copy');
             document.body.removeChild(tempTextArea);
+        }
+
+        function copyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).catch(() => copyFallback(text));
+            } else {
+                copyFallback(text);
+            }
 
             const toast = document.getElementById('toast');
             toast.textContent = '折扣碼「' + text + '」已複製！';
