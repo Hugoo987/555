@@ -753,29 +753,42 @@
         }
 
         function copyToClipboard(text) {
+            let done;
             if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text).catch(() => copyFallback(text));
+                done = navigator.clipboard.writeText(text).catch(() => copyFallback(text));
             } else {
                 copyFallback(text);
+                done = Promise.resolve();
             }
 
             const toast = document.getElementById('toast');
             toast.textContent = '折扣碼「' + text + '」已複製！';
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 900);
+            return done;
         }
 
+        // 開新分頁（功能磚用）：以錨點觸發，較不會被擋或開出空白分頁
         function openExternal(url) {
-            window.open(url, '_blank', 'noopener,noreferrer');
+            const a = document.createElement('a');
+            a.href = url;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
         }
 
+        // 複製後在「同一個分頁」跳轉，不再開新分頁（避免產生空白分頁）
         function copyAndRedirect(code) {
-            copyToClipboard(code);
-            setTimeout(() => openExternal('https://s.shopee.tw/AAFHS8sVxk'), 300);
+            copyToClipboard(code).finally(() => {
+                setTimeout(() => { window.location.href = 'https://s.shopee.tw/AAFHS8sVxk'; }, 350);
+            });
         }
         function copyAndRedirectcoupang(code) {
-            copyToClipboard(code);
-            setTimeout(() => openExternal('https://coupa.ng/cnLsCp'), 300);
+            copyToClipboard(code).finally(() => {
+                setTimeout(() => { window.location.href = 'https://coupa.ng/cnLsCp'; }, 350);
+            });
         }
     </script>
 </body>
