@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>來點好康 | 蝦皮 & 酷澎折扣碼・省錢攻略</title>
+    <meta name="description" content="每日更新蝦皮、酷澎最新折扣碼與免運券，點一下自動複製直接用。全站折價券、超取限定券、VIP 專屬券一次看完，輕鬆省更多。">
+    <meta name="theme-color" content="#ff9f43">
+    <link rel="canonical" href="https://hugoo987.github.io/555/">
+
+    <!-- 社群分享預覽（LINE／Threads／Facebook）
+         注意：og:url 與 og:image 必須是「完整網址」，爬蟲才抓得到。
+         之後若改用自訂網域，記得把下面三處的網址一起換掉。 -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="來點好康">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:title" content="來點好康 | 蝦皮 & 酷澎折扣碼・省錢攻略">
+    <meta property="og:description" content="每日更新蝦皮、酷澎最新折扣碼與免運券，點一下自動複製直接用。">
+    <meta property="og:url" content="https://hugoo987.github.io/555/">
+    <meta property="og:image" content="https://hugoo987.github.io/555/images/og-cover.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="來點好康 - 好康資訊・優惠折扣・省錢攻略・好物推薦">
+    <meta name="twitter:card" content="summary_large_image">
+
     <link rel="icon" href="images/thumb-logo.png">
     <link rel="apple-touch-icon" href="images/thumb-logo.png">
     <style>
@@ -83,21 +102,6 @@
             vertical-align: middle;
         }
 
-        .bell {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1.5px solid var(--line);
-            background: var(--card);
-            color: var(--brown);
-            cursor: pointer;
-            transition: transform 0.15s, box-shadow 0.15s, color 0.15s;
-        }
-        .bell:hover { transform: translateY(-2px); box-shadow: 0 6px 12px var(--shadow); color: var(--orange-2); }
-
         /* ---------- Hero ---------- */
         .hero {
             position: relative;
@@ -137,12 +141,6 @@
             box-shadow: 0 4px 10px var(--shadow);
         }
 
-        .hero-sub {
-            color: #6b5842;
-            font-weight: 700;
-            font-size: 1.05rem;
-        }
-
         /* floating doodles */
         .doodle {
             position: absolute;
@@ -166,27 +164,6 @@
         @keyframes floatSm {
             0%,100% { transform: translateY(0) rotate(-3deg); }
             50%     { transform: translateY(-6px) rotate(3deg); }
-        }
-
-        @media (max-width: 640px) {
-            .hero { padding: 28px 14px 46px; }
-            .hero-title { letter-spacing: 2px; }
-            .hero-pill { font-size: 0.85rem; padding: 8px 16px; margin: 18px 0 12px; }
-            .hero-sub { font-size: 0.92rem; }
-            .doodle { animation-name: floatSm; }
-            .d1 { top: 6px; left: 3%; font-size: clamp(1.5rem, 7vw, 2rem) !important; }
-            .d4 { top: 6px; right: 3%; font-size: clamp(1.5rem, 7vw, 2rem) !important; }
-            .d2 { top: auto; bottom: 6px; left: 4%; font-size: clamp(1.3rem, 6vw, 1.7rem) !important; }
-            .d6 { top: auto; bottom: 6px; right: 4%; font-size: clamp(1.3rem, 6vw, 1.7rem) !important; }
-            .d5 { top: 34px; right: 14%; font-size: clamp(0.9rem, 4vw, 1.1rem) !important; }
-            .d3 { display: none; }
-
-            .tabs { gap: 10px; margin: 6px 0 16px; }
-            .tab { padding: 13px 6px; font-size: 1rem; border-radius: 14px; }
-
-            .update-bar { padding: 10px 14px; font-size: 0.85rem; justify-content: center; text-align: center; }
-
-            .sec-head h2 { font-size: 1.2rem; }
         }
 
         /* ---------- Tabs ---------- */
@@ -275,18 +252,6 @@
             color: var(--brown);
         }
         .sec-head h2 .star { color: var(--orange); }
-        .sec-more {
-            font-size: 0.9rem;
-            font-weight: 800;
-            color: var(--orange-2);
-            background: #fff3e2;
-            border: 1.5px solid var(--orange-soft);
-            padding: 6px 14px;
-            border-radius: 999px;
-            cursor: pointer;
-            transition: all 0.15s;
-        }
-        .sec-more:hover { background: #ffe9cf; }
 
         /* ---------- Coupon grid ---------- */
         .tab-note {
@@ -303,25 +268,30 @@
             gap: 18px;
             margin-bottom: 28px;
         }
-        @media (max-width: 640px) {
-            .feature-strip { padding: 18px 4px; }
-            .feature { padding: 4px 3px; }
-            .feature .ic { font-size: 1.6rem; margin-bottom: 5px; }
-            .feature .t { font-size: 0.82rem; }
-            .feature .s { font-size: 0.68rem; }
-        }
-
+        /* 票券凹口：用 mask 從卡片上「挖掉」兩個半圓，讓頁面背景直接透出來。
+           因此不必再寫死凹口顏色，捲到哪一段漸層都不會露餡。
+           陰影必須改用 filter: drop-shadow，box-shadow 會被 mask 一起裁掉。 */
         .coupon {
+            --notch: 9px;       /* 凹口半徑 */
+            --notch-x: 50px;    /* 距右緣距離，對齊 .coupon-side 的虛線裁切線 */
             position: relative;
             display: flex;
             background: var(--card);
             border: 1.5px solid var(--line);
             border-radius: 22px;
-            box-shadow: 0 10px 22px rgba(240, 175, 95, 0.16);
             overflow: hidden;
-            transition: transform 0.18s, box-shadow 0.18s;
+            -webkit-mask:
+                radial-gradient(circle var(--notch) at calc(100% - var(--notch-x)) 0,    transparent 98%, #000 100%),
+                radial-gradient(circle var(--notch) at calc(100% - var(--notch-x)) 100%, transparent 98%, #000 100%);
+            -webkit-mask-composite: source-in;
+            mask:
+                radial-gradient(circle var(--notch) at calc(100% - var(--notch-x)) 0,    transparent 98%, #000 100%),
+                radial-gradient(circle var(--notch) at calc(100% - var(--notch-x)) 100%, transparent 98%, #000 100%);
+            mask-composite: intersect;
+            filter: drop-shadow(0 7px 11px rgba(240, 175, 95, 0.20));
+            transition: transform 0.18s, filter 0.18s;
         }
-        .coupon:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(240, 175, 95, 0.26); }
+        .coupon:hover { transform: translateY(-4px); filter: drop-shadow(0 12px 16px rgba(240, 175, 95, 0.30)); }
 
         .coupon-body {
             flex: 1;
@@ -403,18 +373,6 @@
         }
         .coupon-side:hover { color: var(--orange-2); background: #fff6ea; }
 
-        /* ticket notches */
-        .coupon::before, .coupon::after {
-            content: "";
-            position: absolute;
-            right: 39px;
-            width: 16px; height: 16px;
-            background: var(--bg-bottom);
-            border-radius: 50%;
-        }
-        .coupon::before { top: -8px; }
-        .coupon::after { bottom: -8px; }
-
         .ribbon {
             position: absolute;
             top: 0; left: 0;
@@ -427,52 +385,6 @@
             z-index: 2;
             box-shadow: 0 3px 6px rgba(255, 140, 60, 0.35);
         }
-
-        /* ---------- Join CTA bar ---------- */
-        .join-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-            padding: 18px 22px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, #fff2df, #ffe6c8);
-            border: 1.5px dashed var(--orange-soft);
-            margin-bottom: 40px;
-        }
-        .join-bar .txt { font-weight: 800; color: #7a5a35; }
-        .join-bar button {
-            padding: 11px 26px;
-            border: none;
-            border-radius: 999px;
-            background: linear-gradient(135deg, #ffb457, #ff9838);
-            color: #fff;
-            font-weight: 800;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 5px 12px rgba(255, 150, 60, 0.35);
-            transition: transform 0.15s, filter 0.15s;
-        }
-        .join-bar button:hover { filter: brightness(1.05); transform: translateY(-2px); }
-
-        /* ---------- Info tiles ---------- */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 42px;
-        }
-        @media (max-width: 640px) {
-            .info-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        .info {
-            text-align: center;
-            padding: 6px;
-        }
-        .info .ic { font-size: 2.1rem; display: block; margin-bottom: 8px; }
-        .info .t { font-weight: 800; color: var(--brown); }
-        .info .s { font-size: 0.82rem; color: var(--muted); margin-top: 3px; }
 
         /* ---------- Community card ---------- */
         .community {
@@ -514,16 +426,6 @@
         .social a .note { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
         .social a.line .name .badge { color: #06c755; }
         .social a.threads .name .badge { color: #111; }
-        .social a.dcard .name .badge { color: #006aa6; }
-
-        @media (max-width: 640px) {
-            .community { flex-direction: column; align-items: stretch; text-align: center; padding: 22px 18px; margin-bottom: 32px; }
-            .community .intro { text-align: center; }
-            .social { justify-content: center; flex-direction: column; width: 100%; }
-            .social a { align-items: center; text-align: center; width: 100%; min-width: 0; }
-            .foot-inner { justify-content: center; text-align: center; gap: 4px; }
-            .coupon .amount { font-size: 2.2rem; }
-        }
 
         /* ---------- Footer ---------- */
         footer.site {
@@ -562,6 +464,48 @@
             z-index: 9999;
         }
         .toast.show { opacity: 1; }
+
+        /* ==================================================================
+           手機版 RWD（原本散在四個地方，統一集中在這裡管理）
+           ================================================================== */
+        @media (max-width: 640px) {
+            /* Hero */
+            .hero { padding: 28px 14px 46px; }
+            .hero-title { letter-spacing: 2px; }
+            .hero-pill { font-size: 0.85rem; padding: 8px 16px; margin: 18px 0 12px; }
+
+            /* 漂浮 emoji：幅度縮小並貼齊四角，避免飄到文字上 */
+            .doodle { animation-name: floatSm; }
+            .d1 { top: 6px; left: 3%; font-size: clamp(1.5rem, 7vw, 2rem) !important; }
+            .d4 { top: 6px; right: 3%; font-size: clamp(1.5rem, 7vw, 2rem) !important; }
+            .d2 { top: auto; bottom: 6px; left: 4%; font-size: clamp(1.3rem, 6vw, 1.7rem) !important; }
+            .d6 { top: auto; bottom: 6px; right: 4%; font-size: clamp(1.3rem, 6vw, 1.7rem) !important; }
+            .d5 { top: 34px; right: 14%; font-size: clamp(0.9rem, 4vw, 1.1rem) !important; }
+            .d3 { display: none; }
+
+            /* Tabs / 更新時間 */
+            .tabs { gap: 10px; margin: 6px 0 16px; }
+            .tab { padding: 13px 6px; font-size: 1rem; border-radius: 14px; }
+            .update-bar { padding: 10px 14px; font-size: 0.85rem; justify-content: center; text-align: center; }
+
+            /* 功能磚 */
+            .feature-strip { padding: 18px 4px; }
+            .feature { padding: 4px 3px; }
+            .feature .ic { font-size: 1.6rem; margin-bottom: 5px; }
+            .feature .t { font-size: 0.82rem; }
+            .feature .s { font-size: 0.68rem; }
+
+            /* 折扣券 */
+            .sec-head h2 { font-size: 1.2rem; }
+            .coupon .amount { font-size: 2.2rem; }
+
+            /* 社群卡 / Footer */
+            .community { flex-direction: column; align-items: stretch; text-align: center; padding: 22px 18px; margin-bottom: 32px; }
+            .community .intro { text-align: center; }
+            .social { justify-content: center; flex-direction: column; width: 100%; }
+            .social a { align-items: center; text-align: center; width: 100%; min-width: 0; }
+            .foot-inner { justify-content: center; text-align: center; gap: 4px; }
+        }
     </style>
 </head>
 
@@ -624,48 +568,8 @@
             </div>
             <p class="tab-note">點擊後自動複製，跳轉後至優惠券處貼上～</p>
 
-            <!-- 折扣碼卡片：要新增就複製一張 .coupon 區塊，改標題/金額/代碼即可 -->
-            <div class="coupon-grid">
-                <div class="coupon">
-                    <span class="ribbon">隱藏版</span>
-                    <div class="coupon-body">
-                        <div class="kind">全站折價券</div>
-                        <div class="amount">100-20</div>
-                        <div class="desc">滿100可折20元</div>
-                        <button class="copy-btn" onclick="copyAndRedirect('SHAUG08')">複製折扣碼</button>
-                    </div>
-                    <div class="coupon-side" onclick="copyAndRedirect('SHAUG08')" title="複製折扣碼" role="button" aria-label="複製折扣碼">⧉</div>
-                </div>
-
-                <div class="coupon">
-                    <span class="ribbon">超取限定</span>
-                    <div class="coupon-body">
-                        <div class="kind">全站折價券</div>
-                        <div class="amount">299-30</div>
-                        <div class="desc">滿299可折30元・點超商複製代碼</div>
-                        <div class="code-row">
-                            <button class="code-btn" onclick="copyAndRedirect('SVSP2608')">7-11取貨</button>
-                            <button class="code-btn" onclick="copyAndRedirect('FMSP2608')">全家取貨</button>
-                        </div>
-                    </div>
-                    <div class="coupon-side deco" aria-hidden="true">✂</div>
-                </div>
-
-                <div class="coupon">
-                    <span class="ribbon">超取限定</span>
-                    <div class="coupon-body">
-                        <div class="kind">商城折價券</div>
-                        <div class="amount">299-30</div>
-                        <div class="desc">滿299可折30元・點超商複製代碼</div>
-                        <div class="code-row">
-                            <button class="code-btn" onclick="copyAndRedirect('SVAP2608')">7-11取貨</button>
-                            <button class="code-btn" onclick="copyAndRedirect('FMAPP2608')">全家取貨</button>
-                            <button class="code-btn" onclick="copyAndRedirect('HLAPP2608')">萊爾富取貨</button>
-                        </div>
-                    </div>
-                    <div class="coupon-side deco" aria-hidden="true">✂</div>
-                </div>
-            </div>
+            <!-- 卡片由 JS 依 COUPONS 資料產生，要改折扣碼請到檔案最下方的 COUPONS -->
+            <div class="coupon-grid" id="grid-shopee"></div>
         </section>
 
         <!-- ===== Coupang tab ===== -->
@@ -675,18 +579,7 @@
             </div>
             <p class="tab-note">點擊後自動複製，跳轉後至優惠券處貼上～</p>
 
-            <div class="coupon-grid">
-                <div class="coupon">
-                    <span class="ribbon">隱藏版</span>
-                    <div class="coupon-body">
-                        <div class="kind">全站折價券</div>
-                        <div class="amount">500-80</div>
-                        <div class="desc">滿500可折80元</div>
-                        <button class="copy-btn" onclick="copyAndRedirectcoupang('Y26JULY80')">複製折扣碼</button>
-                    </div>
-                    <div class="coupon-side" onclick="copyAndRedirectcoupang('Y26JULY80')" title="複製折扣碼" role="button" aria-label="複製折扣碼">⧉</div>
-                </div>
-            </div>
+            <div class="coupon-grid" id="grid-coupang"></div>
         </section>
 
         <!-- ===== Community ===== -->
@@ -768,16 +661,124 @@
         }
 
         // 複製後在「同一個分頁」跳轉，不再開新分頁（避免產生空白分頁）
-        function copyAndRedirect(code) {
+        function copyAndGo(code, url) {
             copyToClipboard(code).finally(() => {
-                setTimeout(() => { window.location.href = 'https://s.shopee.tw/AAFHS8sVxk'; }, 350);
+                setTimeout(() => { window.location.href = url; }, 350);
             });
         }
-        function copyAndRedirectcoupang(code) {
-            copyToClipboard(code).finally(() => {
-                setTimeout(() => { window.location.href = 'https://coupa.ng/cnLsCp'; }, 350);
+
+        /* ==================================================================
+           折扣碼資料 —— 要更新折扣碼只要改這一段，不用動 HTML
+           ------------------------------------------------------------------
+           每張券的欄位：
+             ribbon : 左上角標籤，不需要就寫 null
+             kind   : 券別（全站折價券／商城折價券…）
+             amount : 大字金額（例：299-30）
+             desc   : 下方小字說明
+             codes  : 代碼陣列
+                      只有一組  → 顯示整排「複製折扣碼」大按鈕，右側⧉可點
+                      兩組以上  → 依 label 顯示一排小按鈕，右側改成裝飾剪刀
+           ================================================================== */
+        const STORES = {
+            shopee:  { grid: 'grid-shopee',  url: 'https://s.shopee.tw/AAFHS8sVxk' },
+            coupang: { grid: 'grid-coupang', url: 'https://coupa.ng/cnLsCp' },
+        };
+
+        const COUPONS = {
+            shopee: [
+                {
+                    ribbon: '隱藏版', kind: '全站折價券', amount: '100-20',
+                    desc: '滿100可折20元',
+                    codes: [{ code: 'SHAUG08' }],
+                },
+                {
+                    ribbon: '超取限定', kind: '全站折價券', amount: '299-30',
+                    desc: '滿299可折30元・點超商複製代碼',
+                    codes: [
+                        { label: '7-11取貨', code: 'SVSP2608' },
+                        { label: '全家取貨', code: 'FMSP2608' },
+                    ],
+                },
+                {
+                    ribbon: '超取限定', kind: '商城折價券', amount: '299-30',
+                    desc: '滿299可折30元・點超商複製代碼',
+                    codes: [
+                        { label: '7-11取貨',   code: 'SVAP2608'  },
+                        { label: '全家取貨',   code: 'FMAPP2608' },
+                        { label: '萊爾富取貨', code: 'HLAPP2608' },
+                    ],
+                },
+            ],
+            coupang: [
+                {
+                    ribbon: '隱藏版', kind: '全站折價券', amount: '500-80',
+                    desc: '滿500可折80元',
+                    codes: [{ code: 'Y26JULY80' }],
+                },
+            ],
+        };
+
+        // ---------- 依資料產生券卡 ----------
+        function el(tag, className, text) {
+            const node = document.createElement(tag);
+            if (className) node.className = className;
+            if (text != null) node.textContent = text;
+            return node;
+        }
+
+        function buildCoupon(item, storeUrl) {
+            const card = el('div', 'coupon');
+            if (item.ribbon) card.appendChild(el('span', 'ribbon', item.ribbon));
+
+            const body = el('div', 'coupon-body');
+            body.appendChild(el('div', 'kind', item.kind));
+            body.appendChild(el('div', 'amount', item.amount));
+            body.appendChild(el('div', 'desc', item.desc));
+
+            const single = item.codes.length === 1;
+            if (single) {
+                const btn = el('button', 'copy-btn', '複製折扣碼');
+                btn.addEventListener('click', () => copyAndGo(item.codes[0].code, storeUrl));
+                body.appendChild(btn);
+            } else {
+                const row = el('div', 'code-row');
+                item.codes.forEach(c => {
+                    const btn = el('button', 'code-btn', c.label);
+                    btn.addEventListener('click', () => copyAndGo(c.code, storeUrl));
+                    row.appendChild(btn);
+                });
+                body.appendChild(row);
+            }
+            card.appendChild(body);
+
+            // 側條：單一代碼＝可點的複製鈕；多代碼＝純裝飾剪刀
+            let side;
+            if (single) {
+                side = el('div', 'coupon-side', '⧉');
+                side.title = '複製折扣碼';
+                side.setAttribute('role', 'button');
+                side.setAttribute('aria-label', '複製折扣碼');
+                side.addEventListener('click', () => copyAndGo(item.codes[0].code, storeUrl));
+            } else {
+                side = el('div', 'coupon-side deco', '✂');
+                side.setAttribute('aria-hidden', 'true');
+            }
+            card.appendChild(side);
+
+            return card;
+        }
+
+        function renderCoupons() {
+            Object.entries(STORES).forEach(([store, cfg]) => {
+                const grid = document.getElementById(cfg.grid);
+                if (!grid) return;
+                grid.replaceChildren(
+                    ...(COUPONS[store] || []).map(item => buildCoupon(item, cfg.url))
+                );
             });
         }
+
+        renderCoupons();
     </script>
 </body>
 </html>
