@@ -265,6 +265,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 320px));
             justify-content: center;
+            align-items: start;   /* 各卡維持自身高度，不被同列最高的卡撐開 */
             gap: 18px;
             margin-bottom: 28px;
         }
@@ -355,6 +356,14 @@
         }
         .code-btn:hover { filter: brightness(1.06); transform: translateY(-2px); box-shadow: 0 8px 16px rgba(255, 150, 60, 0.4); }
         .code-btn:active { transform: translateY(0); }
+
+        /* 代碼很多時（5 組以上）改成兩欄，避免卡片被拉得過長 */
+        .code-row.compact .code-btn {
+            flex: 1 1 calc(50% - 4px);
+            min-width: 0;
+            padding: 9px 4px;
+            font-size: 0.84rem;
+        }
 
         /* 純裝飾的票券側條（多代碼卡片用）：剪刀貼齊裁切線 */
         .coupon-side.deco { cursor: default; color: var(--orange-soft); font-size: 1.05rem; }
@@ -539,19 +548,19 @@
         <!-- ===== Update bar =====
              每次更新折扣碼時，記得順手改下面這個日期 -->
         <div class="update-bar">
-            <span class="time">🕒 最後更新時間：<span id="update-time">2026/08/17</span></span>
+            <span class="time">🕒 最後更新時間：<span id="update-time">2026/09/07</span></span>
         </div>
 
         <!-- ===== Shopee tab ===== -->
         <section id="discounts" class="tab-panel">
             <!-- feature strip -->
             <div class="feature-strip">
-                <div class="feature" onclick="openExternal('https://s.shopee.tw/AAGR0swVgA')">
+                <div class="feature" onclick="openExternal('https://s.shopee.tw/2LY7JMPkQ9')">
                     <span class="ic">🎟️</span>
                     <div class="t">活動頁優惠卷</div>
                     <div class="s">蝦皮各種優惠券</div>
                 </div>
-                <div class="feature" onclick="openExternal('https://s.shopee.tw/80BKEtrvdk')">
+                <div class="feature" onclick="openExternal('https://s.shopee.tw/8KpKSYu8EY')">
                     <span class="ic">🎁</span>
                     <div class="t">蝦皮VIP限定卷</div>
                     <div class="s">VIP會員專屬</div>
@@ -680,21 +689,55 @@
                       兩組以上  → 依 label 顯示一排小按鈕，右側改成裝飾剪刀
            ================================================================== */
         const STORES = {
-            shopee:  { grid: 'grid-shopee',  url: 'https://s.shopee.tw/AAFHS8sVxk' },
+            shopee:  { grid: 'grid-shopee',  url: 'https://s.shopee.tw/9pe8FBraHy' },
             coupang: { grid: 'grid-coupang', url: 'https://coupa.ng/cnLsCp' },
         };
 
         const COUPONS = {
             shopee: [
                 {
-                    ribbon: '隱藏版', kind: '全站折價券', amount: '100-20',
-                    desc: '滿100可折20元',
-                    codes: [{ code: 'SHAFF18' }],
+                    ribbon: '9.9限定', kind: '全站折價券', amount: '1000-999',
+                    desc: '滿1000可折999元・點按鈕複製代碼',
+                    codes: [
+                        { label: '第一組', code: '99SP830' },
+                        { label: '第二組', code: '99SP829' },
+                    ],
+                },
+                {
+                    ribbon: '9.9限定', kind: '全站折價券', amount: '499-50',
+                    desc: '滿499可折50元・點按鈕複製代碼',
+                    codes: [
+                        { label: 'SHOPEE826', code: 'SHOPEE826' },
+                        { label: 'SHOPEE827', code: 'SHOPEE827' },
+                        { label: 'SHOPEE828', code: 'SHOPEE828' },
+                        { label: 'SHOPEE829', code: 'SHOPEE829' },
+                        { label: 'SHOPEE830', code: 'SHOPEE830' },
+                        { label: 'SHOPEE831', code: 'SHOPEE831' },
+                        { label: 'SHOPEE901', code: 'SHOPEE901' },
+                        { label: 'SHOPEE902', code: 'SHOPEE902' },
+                        { label: 'SHOPEE903', code: 'SHOPEE903' },
+                        { label: 'SHOPEE904', code: 'SHOPEE904' },
+                        { label: 'SHOPEE905', code: 'SHOPEE905' },
+                        { label: 'SHOPEE906', code: 'SHOPEE906' },
+                        { label: 'SHOPEE907', code: 'SHOPEE907' },
+                    ],
+                },
+                {
+                    ribbon: '超取限定', kind: '全站折價券', amount: '299-30',
+                    desc: '滿299可折30元・點超商複製代碼',
+                    codes: [
+                        { label: '7-11取貨', code: 'SVSP2609' },
+                        { label: '全家取貨', code: 'FMSP2609' },
+                    ],
                 },
                 {
                     ribbon: '超取限定', kind: '商城折價券', amount: '299-30',
-                    desc: '滿299可折30元・全家取貨',
-                    codes: [{ code: 'FMAPP260818' }],
+                    desc: '滿299可折30元・點超商複製代碼',
+                    codes: [
+                        { label: '7-11取貨',   code: 'SVAP2609'  },
+                        { label: '全家取貨',   code: 'FMAPP2609' },
+                        { label: '萊爾富取貨', code: 'HLAPP2609' },
+                    ],
                 },
             ],
             coupang: [
@@ -729,7 +772,7 @@
                 btn.addEventListener('click', () => copyAndGo(item.codes[0].code, storeUrl));
                 body.appendChild(btn);
             } else {
-                const row = el('div', 'code-row');
+                const row = el('div', 'code-row' + (item.codes.length >= 5 ? ' compact' : ''));
                 item.codes.forEach(c => {
                     const btn = el('button', 'code-btn', c.label);
                     btn.addEventListener('click', () => copyAndGo(c.code, storeUrl));
