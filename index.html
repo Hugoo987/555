@@ -548,7 +548,7 @@
         <!-- ===== Update bar =====
              每次更新折扣碼時，記得順手改下面這個日期 -->
         <div class="update-bar">
-            <span class="time">🕒 最後更新時間：<span id="update-time">2026/10/07</span></span>
+            <span class="time">🕒 最後更新時間：<span id="update-time">2026/10/09</span></span>
         </div>
 
         <!-- ===== Shopee tab ===== -->
@@ -699,6 +699,23 @@
                     ribbon: '隱藏版', kind: '全站折價券', amount: '100-20',
                     desc: '滿100可折20元',
                     codes: [{ code: 'SHOCT10' }],
+                },
+                {
+                    ribbon: '超取限定', kind: '全站折價券', amount: '299-30',
+                    desc: '滿299可折30元・點超商複製代碼',
+                    codes: [
+                        { label: '7-11取貨', code: 'SVSP2610' },
+                        { label: '全家取貨', code: 'FMSP2610' },
+                    ],
+                },
+                {
+                    ribbon: '超取限定', kind: '商城折價券', amount: '299-30',
+                    desc: '滿299可折30元・點超商複製代碼',
+                    codes: [
+                        { label: '7-11取貨',   code: 'SVAP2610'  },
+                        { label: '全家取貨',   code: 'FMAPP2610' },
+                        { label: '萊爾富取貨', code: 'HLAPP2610' },
+                    ],
                 },
             ],
             coupang: [
