@@ -548,14 +548,14 @@
         <!-- ===== Update bar =====
              每次更新折扣碼時，記得順手改下面這個日期 -->
         <div class="update-bar">
-            <span class="time">🕒 最後更新時間：<span id="update-time">2026/10/17</span></span>
+            <span class="time">🕒 最後更新時間：<span id="update-time">2026/10/24</span></span>
         </div>
 
         <!-- ===== Shopee tab ===== -->
         <section id="discounts" class="tab-panel">
             <!-- feature strip -->
             <div class="feature-strip">
-                <div class="feature" onclick="openExternal('https://s.shopee.tw/6q0xbCoD6D')">
+                <div class="feature" onclick="openExternal('https://s.shopee.tw/2gCAItQTmJ')">
                     <span class="ic">🎟️</span>
                     <div class="t">活動頁優惠卷</div>
                     <div class="s">蝦皮各種優惠券</div>
@@ -696,14 +696,20 @@
         const COUPONS = {
             shopee: [
                 {
-                    ribbon: '隱藏版', kind: '全站折價券', amount: '100-20',
-                    desc: '滿100可折20元',
-                    codes: [{ code: 'SHOCT18' }],
+                    ribbon: '10/25限定', kind: '社群優惠券', amount: '100-20',
+                    desc: '滿100可折20元・限 10/25 使用',
+                    codes: [{ code: '25SHOCT' }],
                 },
                 {
-                    ribbon: '超取限定', kind: '商城折價券', amount: '299-30',
-                    desc: '滿299可折30元・全家取貨',
-                    codes: [{ code: 'FMAPP261018' }],
+                    ribbon: '每日限定', kind: '社群優惠券', amount: '499-40',
+                    desc: '滿499可折40元・點日期複製當日代碼',
+                    codes: [
+                        { label: '10/26', code: '26HAAA' },
+                        { label: '10/27', code: '27HAAA' },
+                        { label: '10/28', code: '28HAAA' },
+                        { label: '10/29', code: '29HAAA' },
+                        { label: '10/30', code: '30HAAA' },
+                    ],
                 },
             ],
             coupang: [
